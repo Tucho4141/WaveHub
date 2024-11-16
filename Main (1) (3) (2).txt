@@ -1966,9 +1966,20 @@ end
 end
 end)
 --//ConCacDiMeChungMay
-local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Bypass TP", Default = true })
+local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click(New)", Default = false })
 Toggle:OnChanged(function(Value)
-    BypassTP = Value
+    Duma = Value
+end)
+
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if Duma then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,0,0,0))
+            end)
+        end
+    end)
 end)
 
 local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Bypass TP", Default = true })
