@@ -2063,25 +2063,11 @@ Toggle:OnChanged(function(Value)
     BypassTP = Value
 end)
 
-local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Ken", Default = false })
-Toggle:OnChanged(function(Value)
-    AutoKen = Value
-end)
-
-local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Buso", Default = false })
-Toggle:OnChanged(function(Value)
-    AutoBuso = Value
-end)
-
-local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V4", Default = false })
+local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V4", Default = true })
 Toggle:OnChanged(function(Value)
     RaceNguLon = Value
 end)
 
-local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V3", Default = false })
-Toggle:OnChanged(function(Value)
-    Autov3 = Value
-end)
 
 ---//Farm
 local Section = Tabs.Main:AddSection("Tab Farm")
@@ -3849,63 +3835,6 @@ task.spawn(
         end
     end
 )
-task.spawn(
-    function()
-        while task.wait() do
-            task.wait()
-            if AutoKen then
-                if
-                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
-                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
-                not game.Players.LocalPlayer.Character.RaceTransformed.Value
-                then
-                    local be = game:service("VirtualInputManager")
-                    be:SendKeyEvent(true, "K", false, game)
-                    task.wait()
-                    be:SendKeyEvent(false, "K", false, game)
-                end
-            end
-        end
-    end
-)
-task.spawn(
-    function()
-        while task.wait() do
-            task.wait()
-            if AutoBuso then
-                if
-                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
-                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
-                not game.Players.LocalPlayer.Character.RaceTransformed.Value
-                then
-                    local be = game:service("VirtualInputManager")
-                    be:SendKeyEvent(true, "J", false, game)
-                    task.wait()
-                    be:SendKeyEvent(false, "J", false, game)
-                end
-            end
-        end
-    end
-)
-task.spawn(
-    function()
-        while task.wait() do
-            task.wait()
-            if Autov3 then
-                if
-                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
-                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
-                not game.Players.LocalPlayer.Character.RaceTransformed.Value
-                then
-                    local be = game:service("VirtualInputManager")
-                    be:SendKeyEvent(true, "T", false, game)
-                    task.wait()
-                    be:SendKeyEvent(false, "T", false, game)
-                end
-            end
-        end
-    end
-)
 local Toggle = Tabs.an:AddToggle("Auto Spawn Boss Kata", { Title = "Auto Spawn Boss Cake Prince", Default = true })
 Toggle:OnChanged(function(Value)
     _G.AutoSpawnCP = Value
@@ -4450,10 +4379,11 @@ spawn(function()
     end
 end
 )
-local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "Kill Player Trial", Default = false })
+local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "Kill player", Default = false })
 Toggle:OnChanged(function(Value)
     _G.Kill_V4 = Value
     AutoActiveRace = Value
+    RaceNguLon = Value
     StopTween(_G.Kill_V4)
 end)
 spawn(
@@ -4502,19 +4432,18 @@ spawn(
     end
 end
 )
-local KiuTraiAl = Tabs.Race:AddSection("Use Skill Auto Kill Player Trial")
 
-local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "Skill Z", Default = false })
+local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "User Skill z", Default = false })
 Toggle:OnChanged(function(Ditme)
     _G.ConCacZ = Ditme
 end)
 
-local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "Skill X", Default = false })
+local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "User Skill x", Default = false })
 Toggle:OnChanged(function(Lonma)
     _G.ConCacX = Lonma
 end)
 
-local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "Skill C", Default = false })
+local Toggle = Tabs.Race:AddToggle("Kill Trial", { Title = "User Skill c", Default = false })
 Toggle:OnChanged(function(AnDepZai)
     ConCacC = AnDepZai
 end)
