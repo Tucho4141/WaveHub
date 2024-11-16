@@ -1044,7 +1044,7 @@ function AnDepZai(Pos)
         )
         wait()
     end
-    TweenSpeed = 350
+    TweenSpeed = 358
     function topos(aL)
         pcall(function()
                 if game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and  game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart then
@@ -2418,7 +2418,43 @@ spawn(function()
     end
 end
 )
-
+spawn(function()
+        while task.wait() do
+            pcall(function()
+                if _G.AutoEvoRace then
+                    local Back = game.Players.LocalPlayer.Backpack
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","1")
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","2")
+                    if Back:FindFirstChild("Flower 2") then
+                        if Back:FindFirstChild("Flower 1") then
+                            topos(CFrame.new(-5497.06152, 47.5923004, -795.237061))
+                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                if v.Name == "Zombie" then
+                                    repeat task.wait()
+                                        EquipTool(SelectWeapon)
+                                        Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))		
+                                    until Back:FindFirstChild("Flower 3")
+                                end
+                            end
+                        else
+                            topos(game.Workspace["Flower1"].CFrame)
+                        end
+                    else
+                        topos(game.Workspace["Flower2"].CFrame)
+                    end
+                    if Back:FindFirstChild("Flower 1") and Back:FindFirstChild("Flower 2") and Back:FindFirstChild("Flower 3") then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","1")
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","3")
+                    end
+                    for i,v in pairs(game.Workspace:GetChildren()) do
+                        if v.Name == "Flower1" or v.Name == "Flower2" then
+                            v.Size = Vector3.new(20,20,20)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
 
 spawn(function()
     while wait() do
@@ -3071,6 +3107,12 @@ end)
             end
         end
     end)   
+    
+    local Toggle = Tabs.item:AddToggle("Auto Saber", { Title = "Up Race V2", Default = false })
+Toggle:OnChanged(function(Value)
+    _G.AutoEvoRace = Value
+    StopTween(_G.AutoEvoRace)
+end)
     
     local Toggle = Tabs.item:AddToggle("Auto Rengoku", { Title = "Farm Factory", Default = false })
 Toggle:OnChanged(function(Value)
