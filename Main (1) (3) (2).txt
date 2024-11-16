@@ -1730,8 +1730,6 @@ task.spawn(function()
 	end
     end)          
 
-
-local Section = Tabs.Main:AddSection("Setting")
 local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Auto Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
 	Fast_Attack = value
@@ -2044,7 +2042,7 @@ end
 end
 end)
 --//ConCacDiMeChungMay
-local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click (No kick)", Default = false })
+local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click Can be user In Trail V4", Default = false })
 Toggle:OnChanged(function(Value)
     Duma = Value
 end)
@@ -2065,9 +2063,24 @@ Toggle:OnChanged(function(Value)
     BypassTP = Value
 end)
 
+local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Ken", Default = false })
+Toggle:OnChanged(function(Value)
+    AutoKen = Value
+end)
+
+local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Buso", Default = false })
+Toggle:OnChanged(function(Value)
+    AutoBuso = Value
+end)
+
 local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V4", Default = false })
 Toggle:OnChanged(function(Value)
     RaceNguLon = Value
+end)
+
+local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V3", Default = false })
+Toggle:OnChanged(function(Value)
+    Autov3 = Value
 end)
 
 ---//Farm
@@ -3831,6 +3844,63 @@ task.spawn(
                     be:SendKeyEvent(true, "Y", false, game)
                     task.wait()
                     be:SendKeyEvent(false, "Y", false, game)
+                end
+            end
+        end
+    end
+)
+task.spawn(
+    function()
+        while task.wait() do
+            task.wait()
+            if AutoKen then
+                if
+                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
+                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
+                not game.Players.LocalPlayer.Character.RaceTransformed.Value
+                then
+                    local be = game:service("VirtualInputManager")
+                    be:SendKeyEvent(true, "K", false, game)
+                    task.wait()
+                    be:SendKeyEvent(false, "K", false, game)
+                end
+            end
+        end
+    end
+)
+task.spawn(
+    function()
+        while task.wait() do
+            task.wait()
+            if AutoBuso then
+                if
+                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
+                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
+                not game.Players.LocalPlayer.Character.RaceTransformed.Value
+                then
+                    local be = game:service("VirtualInputManager")
+                    be:SendKeyEvent(true, "J", false, game)
+                    task.wait()
+                    be:SendKeyEvent(false, "J", false, game)
+                end
+            end
+        end
+    end
+)
+task.spawn(
+    function()
+        while task.wait() do
+            task.wait()
+            if Autov3 then
+                if
+                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
+                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
+                not game.Players.LocalPlayer.Character.RaceTransformed.Value
+                then
+                    local be = game:service("VirtualInputManager")
+                    be:SendKeyEvent(true, "T", false, game)
+                    task.wait()
+                    be:SendKeyEvent(false, "T", false, game)
                 end
             end
         end
