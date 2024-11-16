@@ -1636,15 +1636,15 @@ LPH_JIT_MAX(function()
 					end)
 				elseif DamageAura then
 					fask.spawn(function()
-						pcall(fask.spawn,AttackFunction,3)
+						pcall(fask.spawn,AttackFunction,10)
 					end)
 				elseif UsefastattackPlayers and Fast_Attack then
 					fask.spawn(function()
-						pcall(fask.spawn,AttackFunction,2)
+						pcall(fask.spawn,AttackFunction,10)
 					end)
 				elseif NeedAttacking and Fast_Attack == false then
-					if ac.hitboxMagnitude ~= 55 then
-						ac.hitboxMagnitude = 55
+					if ac.hitboxMagnitude ~= 70 then
+						ac.hitboxMagnitude = 70
 					end
 					pcall(fask.spawn,ac.attack,ac)
 				end
@@ -1663,7 +1663,7 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 	elseif SelectFastAttackMode == "Fast Attack" then
 		FireCooldown = 0.07
 	elseif SelectFastAttackMode == "Super Fast" then
-		FireCooldown = 0.00
+		FireCooldown = 0.01
 	end
 end
 
