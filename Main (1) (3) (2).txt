@@ -1663,7 +1663,7 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 	elseif SelectFastAttackMode == "Fast Attack" then
 		FireCooldown = 0.07
 	elseif SelectFastAttackMode == "Super Fast" then
-		FireCooldown = 0.01
+		FireCooldown = 0.00
 	end
 end
 
@@ -2063,7 +2063,7 @@ Toggle:OnChanged(function(Value)
     BypassTP = Value
 end)
 
-local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V4", Default = true })
+local Toggle = Tabs.Main:AddToggle("Turn V4", { Title = "Auto Turn On V4", Default = false })
 Toggle:OnChanged(function(Value)
     RaceNguLon = Value
 end)
