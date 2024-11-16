@@ -89,7 +89,7 @@ local fask = task
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Wave Hub",
+    Title = "Wave Hub .FastVip",
     SubTitle = "Free",
     TabWidth = 110,
     Size = UDim2.fromOffset(480, 320),
@@ -1663,7 +1663,7 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 	elseif SelectFastAttackMode == "Fast Attack" then
 		FireCooldown = 0.07
 	elseif SelectFastAttackMode == "Super Fast" then
-		FireCooldown = 0.00
+		FireCooldown = 0
 	end
 end
 
