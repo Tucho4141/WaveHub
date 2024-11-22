@@ -2,7 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 
 local Window = Fluent:CreateWindow({
     Title = "Wave Hub [By _Sobb]",
-    SubTitle = " | Nomal | V1.3",
+    SubTitle = " | Nomal |",
     TabWidth = 160,
     Size = UDim2.fromOffset(660, 350),
     Acrylic = false,
@@ -23,8 +23,6 @@ local Tabs = {
     Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
     Raid = Window:AddTab({ Title = "Tab Dungeon and DF Fruit", Icon = "" }),
 }
-
-local Options = Fluent.Options
 
 repeat
     wait()
