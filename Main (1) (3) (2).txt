@@ -11,8 +11,8 @@ end
 game.StarterGui:SetCore(
     "SendNotification",
     {
-        Title = "Wave Hub",
-        Text = "Loading",
+        Title = "Helo @Everyone",
+        Text = "Script Wave Hub",
         Duration = 5
     })
 
@@ -1730,21 +1730,6 @@ task.spawn(function()
 	end
     end)          
     
-local Click = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click", Default = false })
-Toggle:OnChanged(function(Value)
-    Duma = Value
-end)
-
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if Duma then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,0,0,0))
-            end)
-        end
-    end)
-end)
 
 local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
@@ -4919,7 +4904,7 @@ game.StarterGui:SetCore(
     "SendNotification",
     {
         Title = "",
-        Text = "complete!!",
+        Text = "complete!!✅",
         Duration = 1
     })
                                                                               
