@@ -1377,7 +1377,7 @@ Tabs.infor:AddButton({
         end
     })
 ---------------TabStatus
-local StatusKitsune = Tabs.Sea:AddParagraph({
+local StatusKitsune = Tabs.Home:AddParagraph({
     Title = "Status : Kitsune",
     Content = ""
 })
@@ -1828,7 +1828,7 @@ spawn(function()
 								sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
 							end
 						elseif v.Name == MonFarm or v.Name == Mon then
-							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 4500 then
+							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 5700 then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -1850,7 +1850,7 @@ end)
                     if _G.BringMonster then
                         CheckQuest()
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
+                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4600 then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
