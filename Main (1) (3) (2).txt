@@ -103,7 +103,7 @@ local Tabs = {
     infor = Window:AddTab({ Title = "Tab Discord", Icon = "" }),
     Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
     C = Window:AddTab({ Title = "Tab Player", Icon = "" }),
-    item = Window:AddTab({ Title = "item", Icon = "" }),
+    item = Window:AddTab({ Title = "Tab Farm item", Icon = "" }),
     Home = Window:AddTab({ Title = "Tab Status Sever", Icon = "" }),
     tele = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
     an = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
@@ -1729,8 +1729,24 @@ task.spawn(function()
 		end)
 	end
     end)          
+    
+local Click = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click", Default = false })
+Toggle:OnChanged(function(Value)
+    Duma = Value
+end)
 
-local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Auto Fast Attack", Default = true })
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if Duma then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,0,0,0))
+            end)
+        end
+    end)
+end)
+
+local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
 	Fast_Attack = value
 	DamageAura = value
@@ -2042,21 +2058,6 @@ end
 end
 end)
 --//ConCacDiMeChungMay
-local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click Can be user In Trail V4", Default = false })
-Toggle:OnChanged(function(Value)
-    Duma = Value
-end)
-
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if Duma then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,0,0,0))
-            end)
-        end
-    end)
-end)
 
 local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Bypass Teleport", Default = true })
 Toggle:OnChanged(function(Value)
@@ -4090,7 +4091,7 @@ Tabs.Race:AddButton({
     Title = "Teleport Temple",
     Description = "Tween Đến Cổng Temple",
     Callback = function()
-       DaoKhiTrenCaoCuaAn()
+         
     end 
 })
 
