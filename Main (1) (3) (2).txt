@@ -1756,6 +1756,18 @@ Mouse.Button1Down:Connect(function()
 end)
 
 ---//Bring Mob o Tren Fast Attack Nhin On Khong Ta
+local Slider = Tabs.Main:AddSlider("Slider", {
+        Title = "Bring Mob | Number of Brings",
+        Description = "",
+        Default = 5000,
+        Min = 0,
+        Max = 12000,
+        Rounding = 1,
+        Callback = function(e)
+            _G.BringModeb = e
+        end
+    })
+    
 local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Bring Monters", Default = true })
 Toggle:OnChanged(function(Value)
     _G.BringMonster = Value
@@ -1810,7 +1822,7 @@ end)
                                     v.Humanoid.Animator:Destroy()
                                 end
                                 sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                            elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
+                            elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringModeb then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
@@ -1840,7 +1852,7 @@ end)
                                     v.Humanoid.Animator:Destroy()
                                 end
                                 sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                            elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
+                            elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringModeb then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
@@ -1959,7 +1971,7 @@ end)
                                 end
                             end
                             if _G.AutoFarm and StartMagnetBoneMon then
-                                if (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy") and (v.HumanoidRootPart.Position - PosMonBone.Position).Magnitude <= _G.BringMode and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                if (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy") and (v.HumanoidRootPart.Position - PosMonBone.Position).Magnitude <= _G.BringModeb and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     v.Humanoid:ChangeState(14)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -1971,7 +1983,7 @@ end)
                                 end
                             end
                             if _G.Quest_Nhu_Cai_Lon and StartMagnetBoneMon then
-                                if (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy") and (v.HumanoidRootPart.Position - PosMonBone.Position).Magnitude <= _G.BringMode and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                if (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy") and (v.HumanoidRootPart.Position - PosMonBone.Position).Magnitude <= _G.BringModeb and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                     v.Humanoid:ChangeState(14)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
@@ -2019,7 +2031,7 @@ end)
                                 end
                             end                     
                             if _G.AutoFarm and MagnetDought then
-                                if (v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker") and (v.HumanoidRootPart.Position - PosMonDoughtOpenDoor.Position).Magnitude <= _G.BringMode and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then                                    
+                                if (v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker") and (v.HumanoidRootPart.Position - PosMonDoughtOpenDoor.Position).Magnitude <= _G.BringModeb and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then                                    
                                     v.Humanoid:ChangeState(10)
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Head.CanCollide = false
