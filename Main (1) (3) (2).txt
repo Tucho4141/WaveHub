@@ -1,28 +1,3 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-
-local Window = Fluent:CreateWindow({
-    Title = "Wave Hub [By _Sobb]",
-    SubTitle = " | Nomal |",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(660, 350),
-    Acrylic = false,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.F15
-})
-
-local Tabs = {
-    Melee = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
-    infor = Window:AddTab({ Title = "Tab Discord", Icon = "" }),
-    Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
-    C = Window:AddTab({ Title = "Tab Player", Icon = "" }),
-    item = Window:AddTab({ Title = "Tab Farm item", Icon = "" }),
-    Home = Window:AddTab({ Title = "Tab Status", Icon = "" }),
-    tele = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
-    an = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
-    meo = Window:AddTab({ Title = "Tab Mirage", Icon = "" }),
-    Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
-    Raid = Window:AddTab({ Title = "Tab Dungeon and DF Fruit", Icon = "" }),
-}
 
 repeat
     wait()
@@ -112,6 +87,33 @@ checkAndKickPlayer()
 if not game:IsLoaded() then game.Loaded:Wait() end
 local fask = task 
 
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Wave Hub [By _Sobb]",
+    SubTitle = " | Nomal |",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(660, 350),
+    Acrylic = false,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.F15
+})
+
+local Tabs = {
+    Melee = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
+    infor = Window:AddTab({ Title = "Tab Discord", Icon = "" }),
+    Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
+    C = Window:AddTab({ Title = "Tab Player", Icon = "" }),
+    item = Window:AddTab({ Title = "Tab Farm item", Icon = "" }),
+    Home = Window:AddTab({ Title = "Tab Status", Icon = "" }),
+    tele = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
+    an = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
+    meo = Window:AddTab({ Title = "Tab Mirage", Icon = "" }),
+    Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
+    Raid = Window:AddTab({ Title = "Tab Dungeon and DF Fruit", Icon = "" }),
+}
+
+local Options = Fluent.Options
 
 --//ScreenGui
 local ScreenGui = Instance.new("ScreenGui")
