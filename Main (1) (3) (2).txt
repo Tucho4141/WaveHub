@@ -1324,7 +1324,7 @@ local jobId = game.JobId
 
 local CheckLuOcCho = #game:GetService("Players"):GetPlayers()
 
-_G.BringMode = 300
+_G.BringMode = 3000
 PosY = 45
 AutoHaki()
 
@@ -1655,7 +1655,7 @@ end)()
 
 local SelectFastAttackMode = (SelectFastAttackMode or "Super Fast")
 
-SelectedFastAttackMode = {"0","0.5","0.02","0.175","💀 Fast"}
+SelectedFastAttackMode = {"0","0.5","0.02","0.175","0.005"}
 
 local function ChangeModeFastAttack(SelectFastAttackMode)
 	if SelectFastAttackMode == "0" then
@@ -1664,8 +1664,8 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 		FireCooldown = 0.5
     elseif SelectFastAttackMode == "0.02" then
         FireCooldown = 0.02
-    elseif SelectFastAttackMode == "💀 Fast" then
-        FireCooldown = 0.0000000000000000001
+    elseif SelectFastAttackMode == "0.005" then
+        FireCooldown = 0.005
 	elseif SelectFastAttackMode == "0.175" then
 		FireCooldown = 0.175
 	end
@@ -1734,6 +1734,30 @@ task.spawn(function()
 	end
     end)          
     
+local Slider = Tabs.Main:AddSlider("Slider", {
+        Title = "Bring Mob | Number of Brings",
+        Description = "",
+        Default = 4200,
+        Min = 0,
+        Max = 5200,
+        Rounding = 1,
+        Callback = function(e)
+            _G.BringModeb = e
+        end
+    })
+    
+ local Slider = Tabs.Main:AddSlider("Slider", {
+        Title = "Bring Mob | Check ",
+        Description = "",
+        Default = 2000,
+        Min = 0,
+        Max = 2000,
+        Rounding = 1,
+        Callback = function(e)
+            _G.BringModeb = e
+        end
+    })
+    
 
 local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
@@ -1756,17 +1780,6 @@ Mouse.Button1Down:Connect(function()
 end)
 
 ---//Bring Mob o Tren Fast Attack Nhin On Khong Ta
-local Slider = Tabs.Main:AddSlider("Slider", {
-        Title = "Bring Mob | Number of Brings",
-        Description = "",
-        Default = 5000,
-        Min = 0,
-        Max = 12000,
-        Rounding = 1,
-        Callback = function(e)
-            _G.BringModeb = e
-        end
-    })
     
 local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Bring Monters", Default = true })
 Toggle:OnChanged(function(Value)
