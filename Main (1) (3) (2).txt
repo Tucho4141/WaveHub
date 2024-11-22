@@ -104,7 +104,7 @@ local Tabs = {
     Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
     C = Window:AddTab({ Title = "Tab Player", Icon = "" }),
     item = Window:AddTab({ Title = "Tab Farm item", Icon = "" }),
-    Home = Window:AddTab({ Title = "Tab Status Sever", Icon = "" }),
+    Home = Window:AddTab({ Title = "Tab Status", Icon = "" }),
     tele = Window:AddTab({ Title = "Tab Teleport", Icon = "" }),
     an = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
     meo = Window:AddTab({ Title = "Tab Mirage", Icon = "" }),
@@ -1377,6 +1377,30 @@ Tabs.infor:AddButton({
         end
     })
 ---------------TabStatus
+local StatusKitsune = Tabs.Sea:AddParagraph({
+    Title = "Status : Kitsune",
+    Content = ""
+})
+function UpdateKitsune()
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+        StatusKitsune:SetDesc("🟢")
+    else
+        StatusKitsune:SetDesc("🔴")
+     end
+end
+
+local StatusBone = Tabs.Home:AddParagraph({
+    Title = "Status : Bone",
+    Content = ""
+})
+	spawn(function()
+		pcall(function()
+			while wait() do
+				StatusBone:SetDesc("You Have : "..tostring(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check").." Bones"))
+			end
+		end)
+	end)
+	
 local BuonNaoDauAiThau = Tabs.Home:AddParagraph({
     Title = "Status : Katakuri",
     Content = ""
