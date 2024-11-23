@@ -1517,7 +1517,7 @@ Tabs.Home:AddButton({
 })
 ------//Farm Ming Di Cac Ban Oi
 ----//Tab Main Nhe Cac Ban Chu May Tab Kia Met Nhoc Lam Buoc Dau Se La Fast Attack Nha, Roi Sau Do Den Bring Mob
-if not LPH_OBFUSCATED then
+ 
 	LPH_JIT_MAX = (function(...) return ... end)
 	LPH_NO_VIRTUALIZE = (function(...) return ... end)
 	LPH_NO_UPVALUES = (function(...) return ... end)
@@ -1760,30 +1760,17 @@ task.spawn(function()
     end)          
     
 local Slider = Tabs.Main:AddSlider("Slider", {
-        Title = "Bring Mob | Number of Brings",
+        Title = "Time bring",
         Description = "",
-        Default = 4200,
+        Default = 1,
         Min = 0,
-        Max = 5200,
+        Max = 1,
         Rounding = 1,
         Callback = function(e)
             _G.BringModeb = e
         end
     })
     
- local Slider = Tabs.Main:AddSlider("Slider", {
-        Title = "Bring Mob | Check ",
-        Description = "",
-        Default = 2000,
-        Min = 0,
-        Max = 2000,
-        Rounding = 1,
-        Callback = function(e)
-            _G.BringModeb = e
-        end
-    })
-    
-
 local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
 	Fast_Attack = value
@@ -1805,6 +1792,23 @@ Mouse.Button1Down:Connect(function()
 end)
 
 ---//Bring Mob o Tren Fast Attack Nhin On Khong Ta
+
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Click", Default = false })
+
+    Toggle:OnChanged(function(e)
+        cc = e
+    end)
+    
+    spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if cc then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
+end)
     
 local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Bring Monters", Default = true })
 Toggle:OnChanged(function(Value)
@@ -1819,7 +1823,7 @@ spawn(function()
 				if _G.BringMonster then
 					if StartBring and v.Name == MonFarm or v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= _G.BringMode then
 						if v.Name == "Factory Staff" then
-							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 5000 then
+							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 4500 then
 								v.Head.CanCollide = false
 								v.HumanoidRootPart.CanCollide = false
 								v.HumanoidRootPart.CFrame = PosMon
@@ -1829,7 +1833,7 @@ spawn(function()
 								sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
 							end
 						elseif v.Name == MonFarm or v.Name == Mon then
-							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 5700 then
+							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 4500 then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -1851,7 +1855,7 @@ end)
                     if _G.BringMonster then
                         CheckQuest()
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4600 then
+                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4500 then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
@@ -1881,7 +1885,7 @@ end)
                     if _G.BringMonster then
                         CheckQuest()
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 250 then
+                            if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff" or Mon == "Monkey" or Mon == "Dragon Crew Warrior" or Mon == "Dragon Crew Archer") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4500 then
                                 v.HumanoidRootPart.CFrame = PosMon
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
