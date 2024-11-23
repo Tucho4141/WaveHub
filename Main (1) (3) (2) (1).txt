@@ -1044,12 +1044,12 @@ function AnDepZai(Pos)
         )
         wait()
     end
-    TweenSpeed = 379
+    TweenSpeed = 370
     function topos(aL)
         pcall(function()
                 if game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and  game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart then
                     if not TweenSpeed then
-                        TweenSpeed = 379
+                        TweenSpeed = 370
                     end
                     DefualtY = aL.Y
                     TargetY = aL.Y
