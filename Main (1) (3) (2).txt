@@ -1793,22 +1793,6 @@ end)
 
 ---//Bring Mob o Tren Fast Attack Nhin On Khong Ta
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Click", Default = false })
-
-    Toggle:OnChanged(function(e)
-        cc = e
-    end)
-    
-    spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if cc then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-            end)
-        end
-    end)
-end)
     
 local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Bring Monters", Default = true })
 Toggle:OnChanged(function(Value)
