@@ -933,9 +933,9 @@ end
     function TP(Pos)
         Distance = (Pos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if Distance < 300 then
-            Speed = 300
+            Speed = 370
         elseif Distance >= 1000 then
-            Speed = 300
+            Speed = 370
         end
         game:GetService("TweenService"):Create(
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
@@ -1044,12 +1044,12 @@ function AnDepZai(Pos)
         )
         wait()
     end
-    TweenSpeed = 358
+    TweenSpeed = 370
     function topos(aL)
         pcall(function()
                 if game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and  game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart then
                     if not TweenSpeed then
-                        TweenSpeed = 350
+                        TweenSpeed = 370
                     end
                     DefualtY = aL.Y
                     TargetY = aL.Y
@@ -1324,7 +1324,7 @@ local jobId = game.JobId
 
 local CheckLuOcCho = #game:GetService("Players"):GetPlayers()
 
-_G.BringMode = 300
+_G.BringMode = 500
 PosY = 45
 AutoHaki()
 
@@ -1673,7 +1673,7 @@ local SelectedFastAttackModes = Tabs.Main:AddDropdown("SelectedFastAttackModes",
 	Title = "Slect Fast Attack",
 	Values = SelectedFastAttackMode,
 	Multi = false,
-	Default = 3,
+	Default = "",
 })
 
 SelectedFastAttackModes:OnChanged(function(value)
@@ -2043,7 +2043,7 @@ end
 end
 end)
 --//ConCacDiMeChungMay
-local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Fast Attack", Default = true })
+local Toggle = Tabs.Main:AddToggle("Bring Mob", { Title = "Auto Click", Default = true })
 Toggle:OnChanged(function(Value)
     Click = Value
     r = Value
@@ -2084,22 +2084,6 @@ spawn(function()
              pcall(function()
                 game:GetService'VirtualUser':CaptureController()
 			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-            end)
-        end
-    end)
-end)
-
-local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click Can be user In Trail V4", Default = false })
-Toggle:OnChanged(function(Value)
-    Duma = Value
-end)
-
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if Duma then
-             pcall(function()
-                game:GetService'VirtualUser':CaptureController()
-			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,0,0,0))
             end)
         end
     end)
