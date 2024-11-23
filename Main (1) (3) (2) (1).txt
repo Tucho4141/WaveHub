@@ -1732,7 +1732,7 @@ task.spawn(function()
 	end
     end)          
 
-local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "ast Attack", Default = true })
+local FASTAT = Tabs.Main:AddToggle("Fast_Attack", {Title = "Fast Attack", Default = true })
 FASTAT:OnChanged(function(value)
 	Fast_Attack = value
 	DamageAura = value
@@ -2410,6 +2410,7 @@ spawn(function()
 local Toggle = Tabs.Main:AddToggle("Start Auto Farm", { Title = "Start Auto Farm", Description = "Bắt Đầu Farm", Default = false })
 Toggle:OnChanged(function(Value)
     _G.AutoFarm = Value
+    e = Value
     StopTween(_G.AutoFarm)
 end)
 
@@ -4934,6 +4935,24 @@ local Toggle = Tabs.Melee:AddToggle("Random Bone", { Title = "Random Bone", Defa
 Toggle:OnChanged(function(WinDyLaConCacTao)
     _G.RandomBone = WinDyLaConCacTao
 end)
+
+spawn(function()
+        pcall(function()
+            game:GetService("RunService").Stepped:Connect(function()
+                  if e then
+                     if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        local Noclip = Instance.new("BodyVelocity")
+                        Noclip.Name = "BodyClip"
+                        Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                        Noclip.Velocity = Vector3.new(0,0,0)
+                     end
+                  else	
+                      game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                  end
+            end)
+        end)
+    end)
 
 repeat
     wait()
