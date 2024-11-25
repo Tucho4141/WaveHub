@@ -1664,8 +1664,8 @@ local function ChangeModeFastAttack(SelectFastAttackMode)
 		FireCooldown = 0.02
 	elseif SelectFastAttackMode == "0.005" then
 		FireCooldown = 0.005
-    elseif SelectFastAttackMode == ".0" then
-        FireCooldown = .0
+    elseif SelectFastAttackMode == "0.10" then
+        FireCooldown = 0.10
 	end
 end
 
