@@ -109,7 +109,8 @@ local Tabs = {
     an = Window:AddTab({ Title = "Tab Misc", Icon = "" }),
     meo = Window:AddTab({ Title = "Tab Mirage", Icon = "" }),
     Race = Window:AddTab({ Title = "Tab Race", Icon = "" }),
-    Raid = Window:AddTab({ Title = "Tab Dungeon and DF Fruit", Icon = "" }),
+    cac = Window:AddTab({ Title = "Tab Fruit", Icon = "" }),
+    Raid = Window:AddTab({ Title = "Tab Raid", Icon = "" }),
 }
 
 local Options = Fluent.Options
@@ -2044,7 +2045,7 @@ end
 end
 end)
 --//ConCacDiMeChungMay
-local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click Can be user In Trail V4", Default = false })
+local Toggle = Tabs.Main:AddToggle("Bypass TP", { Title = "Auto Click", Default = false })
 Toggle:OnChanged(function(Value)
     Duma = Value
 end)
@@ -4703,11 +4704,6 @@ spawn(function()
         end
     end)
 
-local Mastery = Tabs.Raid:AddSection("Teleport Fruit")
-local Toggle = Tabs.Raid:AddToggle("Store Fruit", { Title = "Store Fruit", Default = false })
-Toggle:OnChanged(function(Value)
-    getgenv().AutoStoreFruits = Value
-end)
 
 local function Get_Fruit(Fruit)
   if Fruit == "Rocket Fruit" then
@@ -4809,23 +4805,6 @@ task.spawn(function()
   end
 end)
 
-local Toggle = Tabs.Raid:AddToggle("Teleport Fruit", { Title = "Teleport Fruit", Default = false })
-Toggle:OnChanged(function(Value)
-    _G.Tweenfruit = Value
-    StopTween(_G.Tweenfruit)
-end)
-    
-spawn(function()
-    while wait(.1) do
-        if _G.Tweenfruit then
-            for i,v in pairs(game.Workspace:GetChildren()) do
-                if string.find(v.Name, "Fruit") then
-                    topos(v.Handle.CFrame)
-                end
-            end
-        end
-    end
-end)
 -----Shop Melee-----
 local Dropdown = Tabs.Melee:AddDropdown("DropdownMelee", {
     Title = "Mua Melee",
@@ -4904,6 +4883,73 @@ end)
 local Toggle = Tabs.Melee:AddToggle("Random Bone", { Title = "Random Bone", Default = false })
 Toggle:OnChanged(function(WinDyLaConCacTao)
     _G.RandomBone = WinDyLaConCacTao
+end)
+
+local Toggle = Tabs.cac:AddToggle("Store Fruit", { Title = "Store Fruit", Default = true })
+Toggle:OnChanged(function(Value)
+    getgenv().AutoStoreFruits = Value
+end)
+
+--//Fruit
+
+local Remote_GetFruits = game.ReplicatedStorage:FindFirstChild("Remotes").CommF_:InvokeServer("GetFruits");
+Table_DevilFruitSniper = {}
+ShopDevilSell = {}
+for i,v in next,Remote_GetFruits do
+    table.insert(Table_DevilFruitSniper,v.Name)
+    if v.OnSale then 
+        table.insert(ShopDevilSell,v.Name)
+    end
+end
+_G.SelectFruit = "Leopard-Leopard"
+
+local DropdownFruit = Tabs.cac:AddDropdown("DropdownFruit", {
+    Title = "Select Fruit",
+    Description = "",
+    Values = Table_DevilFruitSniper,
+    Multi = false,
+    Default = 1,
+})
+
+DropdownFruit:SetValue("...")
+
+DropdownFruit:OnChanged(function(Value)
+    _G.SelectFruit = Value
+end)
+
+
+local ToggleFruit = Tabs.cac:AddToggle("ToggleFruit", {Title = "Auto Buy Fruit Sniper",Description = "", Default = false })
+ToggleFruit:OnChanged(function(Value)
+    _G.AutoBuyFruitSniper = Value
+end)
+Options.ToggleFruit:SetValue(false)
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if _G.AutoBuyFruitSniper then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PurchaseRawFruit","_G.SelectFruit",false)
+            end 
+        end
+    end)
+end)
+
+local Toggle = Tabs.cac:AddToggle("Teleport Fruit", { Title = "Teleport Fruit", Default = false })
+Toggle:OnChanged(function(Value)
+    _G.Tweenfruit = Value
+    StopTween(_G.Tweenfruit)
+end)
+    
+spawn(function()
+    while wait(.1) do
+        if _G.Tweenfruit then
+            for i,v in pairs(game.Workspace:GetChildren()) do
+                if string.find(v.Name, "Fruit") then
+                    topos(v.Handle.CFrame)
+                end
+            end
+        end
+    end
 end)
 
 repeat
